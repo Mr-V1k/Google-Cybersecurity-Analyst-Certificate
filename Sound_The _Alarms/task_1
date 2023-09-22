@@ -1,0 +1,39 @@
+Network Analysis and Monitoring
+
+Wireshark a tool used to monitor the network traffic
+
+Task 1:
+Exploring packet data, key properties:  
+    No. : The index number of the packet in this packet capture file
+    Time: The timestamp of the packet
+    Source: The source IP address
+    Destination: The destination IP address
+    Protocol: The protocol contained in the packet
+    Length: The total length of the packet
+    Info: Some infomation about the data in the packet (the payload) as interpreted by Wireshark
+
+Applying filters:
+Task 2:
+Type into the apply filter bar: 
+  ip.addr == <ip_address>
+  This gives the traffic associated with the ip address.
+
+Task 3:
+Get the packets that come from the source
+ip.src == <source_ip_address>
+
+Get the packets according to the destination
+ip.dst == <destination_ip_address>
+
+Task 4:
+Exploring DNS packets
+udp.port == 53
+
+Task 5:
+Filter to explore TCP packets
+tcp.port == 80
+
+Task 4:
+To get TCP packet that have specific data
+tcp contains "specific data"
+Eg: tcp contains "curl"
