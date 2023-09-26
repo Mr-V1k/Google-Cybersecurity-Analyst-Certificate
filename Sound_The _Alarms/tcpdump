@@ -1,0 +1,40 @@
+TCPDump is used to capture and analyze live network traffic.
+
+1. To find all the interfaces that are available use:
+    sudo tcpdump -D
+
+2. Inspecting netword traffic of a network interface with tcpdump
+    sudo tcpdump -i eth0 -v -c5
+    Options:
+      `-i`: used to select the interface
+      `-v`: verbose 
+      `-c5`: capture 5 packets of data
+
+3. Saving captured data into a file
+    sudo tcpdump -i eth0 -nn -c9 port 80 -w capture.pcap &
+    Options:
+      `-i eth0`: Capture data from the eth0 interface.
+      `-nn`: Do not attempt to resolve IP addresses or ports to names.This is best practice from a security perspective, as the lookup data may not be valid. It also prevents malicious actors from being alerted to an investigation.
+      `-c9`: Capture 9 packets of data and then exit.
+      `port 80`: Filter only port 80 traffic. This is the default HTTP port.
+      `-w capture.pcap`: Save the captured data to the named file.
+      `&`: This is an instruction to the Bash shell to run the command in the background.
+
+    Generate some traffic traffic on the port 80 using curl 
+    curl <url>
+
+    verify the the captured packet:
+    ls -l capture.pcap
+
+4. Filtering the captured data:
+    Filtering packet header data from the capture.pcap
+    sudo tcpdump -nn -r capture.pcap -v
+    Options:
+      -nn: Disable port and protocol name lookup.
+      -r: Read capture data from the named file.
+      -v: Display detailed packet data.
+
+    Filter extended packet data
+    sudo tcpdump -nn -r capture.pcap -X
+
+  
